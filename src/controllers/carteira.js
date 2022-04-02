@@ -5,7 +5,6 @@ function WalkController() {
 
   async function addWalk(req, res) {
     const { body } = req;
-    console.log(req);
     const result = await walkService.addWalk(body);
     return res.json(result);
   }

@@ -14,4 +14,4 @@ app.post('/walk', walkController.addWalk);
 app.get('/walk', walkController.getWalk);
 app.delete('/walk', walkController.deleteWalk);
 
-app.listen(port, () => console.log(`Serviço online na porta ${port}!`));
+app.listen(port);
