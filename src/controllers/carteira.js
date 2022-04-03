@@ -1,3 +1,4 @@
+const { StatusCodes } = require('http-status-codes');
 const { WalkService } = require('../services/carteira');
 
 function WalkController() {
@@ -6,17 +7,17 @@ function WalkController() {
   async function addWalk(req, res) {
     const { body } = req;
     const result = await walkService.addWalk(body);
-    return res.json(result);
+    return res.status(StatusCodes.CREATED).json(result);
   }
 
   async function getWalk(req, res) {
     const result = await walkService.getWalk();
-    return res.json(result);
+    return res.status(StatusCodes.OK).json(result);
   }
 
   async function deleteWalk(req, res) {
     walkService.deleteWalk();
-    return res.json({ message: 'Carteira deletada' });
+    return res.status(StatusCodes.OK).json({ message: 'Carteira deletada' });
   }
 
   return {
