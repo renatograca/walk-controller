@@ -3,15 +3,9 @@ require('dotenv/config');
 
 const { MONGO_URI } = process.env;
 
-// const db = null;
-
-async function connection() {
-  // db ? Promise.resolve(db)
-  //   :
+async function connection(collection) {
   const mongoConnection = await MongoClient.connect(MONGO_URI);
-  const dbConnection = mongoConnection.db('carteira');
-
-  return dbConnection;
+  return mongoConnection.db('carteira').collection(collection);
 }
 
 module.exports = connection;

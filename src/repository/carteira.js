@@ -1,12 +1,14 @@
 const connection = require('../models/connection');
 
+const WALK = 'walk';
+
 function WalkRepository() {
   async function earnings() {
-    return (await connection()).collection('earnings');
+    return connection(WALK);
   }
 
   async function addWalk(value) {
-    (await earnings()).insertOne({ value });
+    (await earnings()).insertOne(value);
 
     return 'Valor adicionado com sucesso';
   }
