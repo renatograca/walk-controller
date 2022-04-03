@@ -2,9 +2,10 @@ const { WalkRepository } = require('../repository/carteira');
 
 function WalkService() {
   const walkRepository = WalkRepository();
+
   async function addWalk(value) {
-    if (value < 0) {
-      return 'O valor deve ser maior que ZERO';
+    if (value < 0 || !typeof value !== Number) {
+      return 'Só é aceito numeros maior que ZERO';
     }
     return walkRepository.addWalk(value);
   }
